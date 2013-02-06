@@ -9,7 +9,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/powerline'
 
-source /home/jibi/.vim/bundle/powerline/powerline/bindings/vim/plugin/source_plugin.vim
+source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/source_plugin.vim
 python from powerline.bindings.vim import source_plugin; source_plugin()
 
 filetype plugin indent on
