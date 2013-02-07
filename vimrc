@@ -3,16 +3,18 @@ filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
 Bundle 'gmarik/vundle'
-Bundle 'sjl/gundo.vim'
+
 Bundle 'scrooloose/nerdtree'
 Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/powerline'
-
-source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/source_plugin.vim
-python from powerline.bindings.vim import source_plugin; source_plugin()
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'sjl/gundo.vim'
 
 filetype plugin indent on
+
+runtime macros/matchit.vim
 
 set bs=2
 
@@ -78,21 +80,24 @@ if &term =~ "rxvt"
 	exec "set <C-Right>=\<ESC>Oc"
 endif
 
+"NERDTree
 map <Leader>N :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
 let NERDChristmasTree=1
 
-noremap <silent> <F8> :TlistToggle<CR>
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Close_On_Select = 1
-
-runtime macros/matchit.vim
-
+"tagbar
 nnoremap <silent> <F8> :TagbarToggle<CR>
 let g:tagbar_left = 1
 let g:tagbar_autoclose = 1
 let g:tagbar_autofocus = 1
 
+"Gundo
 nnoremap <silent> <F5> :GundoToggle<CR>
 
+"Powerline
+source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/source_plugin.vim
+python from powerline.bindings.vim import source_plugin; source_plugin()
+
+"ycm
+let g:ycm_global_ycm_extra_conf = '/home/jibi/.vim/config/YouCompleteMe/ycm_extra_conf.py'
+let g:ycm_key_invoke_completion = '<Leader>c'
