@@ -11,6 +11,7 @@ Bundle 'majutsushi/tagbar'
 Bundle 'Lokaltog/powerline'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'sjl/gundo.vim'
+Bundle 'scrooloose/syntastic'
 
 filetype plugin indent on
 
@@ -58,6 +59,9 @@ set nowrap
 set wildmenu
 set wildmode=full
 
+set exrc
+set secure
+
 map <silent> <kPageUp> :tabprevious<CR>
 map <silent> <kPageDown> :tabnext<CR>
 imap <silent> <kPageUp> <C-O>:tabprevious<CR>
@@ -95,8 +99,7 @@ let g:tagbar_autofocus = 1
 nnoremap <silent> <F5> :GundoToggle<CR>
 
 "Powerline
-source ~/.vim/bundle/powerline/powerline/bindings/vim/plugin/source_plugin.vim
-python from powerline.bindings.vim import source_plugin; source_plugin()
+set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 "ycm
 let g:ycm_global_ycm_extra_conf = '/home/jibi/.vim/config/YouCompleteMe/ycm_extra_conf.py'
