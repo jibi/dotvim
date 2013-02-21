@@ -104,3 +104,7 @@ set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 "ycm
 let g:ycm_global_ycm_extra_conf = '/home/jibi/.vim/config/YouCompleteMe/ycm_extra_conf.py'
 let g:ycm_key_invoke_completion = '<Leader>c'
+
+"syntastic
+let g:syntastic_c_checker = "clang"
+let g:syntastic_c_compiler_options = ""
