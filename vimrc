@@ -2,17 +2,24 @@ set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 
-Bundle 'gmarik/vundle'
-
-Bundle 'scrooloose/nerdtree'
-Bundle 'majutsushi/tagbar'
-Bundle 'Lokaltog/powerline'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'tpope/vim-fugitive'
+Bundle 'kien/ctrlp.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'mileszs/ack.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'godlygeek/tabular'
+Bundle 'gmarik/vundle'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'airblade/vim-gitgutter'
+Bundle 'bling/vim-airline'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'rust-lang/rust.vim'
 
+call vundle#end()
 filetype plugin indent on
 
 runtime macros/matchit.vim
@@ -23,9 +30,9 @@ set autoindent
 set smartindent
 set smarttab
 set noexpandtab
-set ts=2
+set tabstop=8
 set shiftwidth=2
-set textwidth=80
+set textwidth=72
 
 set incsearch
 set showmatch
@@ -58,14 +65,21 @@ set nowrap
 
 set wildmenu
 set wildmode=full
+set wildignore+=*.o
 
 set exrc
 set secure
 
-map <silent> <kPageUp> :tabprevious<CR>
-map <silent> <kPageDown> :tabnext<CR>
-imap <silent> <kPageUp> <C-O>:tabprevious<CR>
-imap <silent> <kPageDown> <C-O>:tabnext<CR>
+set hidden
+set confirm
+
+map <silent> <kPageUp> :bn<CR>
+map <silent> <kPageDown> :bp<CR>
+
+imap <silent> <kPageUp> <C-O>:bn<CR>
+imap <silent> <kPageDown> <C-O>:bp<CR>
+
+nmap <Leader>s :mksession! .vim.session<CR>
 
 map <F1> <Nop>
 imap <F1> <Nop>
@@ -84,6 +98,16 @@ if &term =~ "rxvt"
 	exec "set <C-Right>=\<ESC>Oc"
 endif
 
+autocmd Filetype ruby  setlocal expandtab
+autocmd Filetype eruby setlocal expandtab
+autocmd Filetype c     setlocal ts=8 sw=8
+autocmd Filetype cpp   setlocal ts=8 sw=8
+autocmd Filetype tex   let g:gitgutter_enabled = 0
+"autocmd Filetype tex set textwidth=1000
+"autocmd Filetype html setlocal ts=2 sw=2 expandtab
+
+let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['elixir', 'tex'] }
+
 "NERDTree
 map <Leader>N :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
@@ -98,13 +122,21 @@ let g:tagbar_autofocus = 1
 "Gundo
 nnoremap <silent> <F5> :GundoToggle<CR>
 
-"Powerline
-set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
+"ctrlp
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
 
 "ycm
-let g:ycm_global_ycm_extra_conf = '/home/jibi/.vim/config/YouCompleteMe/ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/config/ycm_extra_conf.py'
+let g:ycm_extra_conf_vim_data   = ['&filetype']
 let g:ycm_key_invoke_completion = '<Leader>c'
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_filetype_specific_completion_to_disable = { 'markdown': 'unimportant' }
+let g:ycm_register_as_syntastic_checker = 0
 
-"syntastic
-let g:syntastic_c_checker = "clang"
-let g:syntastic_c_compiler_options = ""
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline_theme = 'jibilol'
+
