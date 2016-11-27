@@ -1,3 +1,4 @@
 bundle/*
 !bundle/vundle
 config/ycm_extra_conf.pyc
+config/__pycache__

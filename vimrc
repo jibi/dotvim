@@ -18,6 +18,8 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'bling/vim-airline'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'rust-lang/rust.vim'
+Bundle 'fatih/vim-go'
+Bundle 'jamessan/vim-gnupg'
 
 call vundle#end()
 filetype plugin indent on
@@ -45,6 +47,7 @@ set scrolloff=8
 set laststatus=2
 
 set number
+set relativenumber
 set ruler
 set ttyfast
 
@@ -64,7 +67,7 @@ set showmode
 set nowrap
 
 set wildmenu
-set wildmode=full
+set wildmode=list:longest
 set wildignore+=*.o
 
 set exrc

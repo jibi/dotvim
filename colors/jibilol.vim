@@ -15,7 +15,7 @@ let colors_name = "jibilol"
 set t_Co=256
 
 set fillchars=stl:\ ,stlnc:\ ,vert:│,fold:\ 
-set listchars=tab:\·\ ,trail:░,extends:»,precedes:«
+set listchars=tab:\ \ ,trail:░,extends:»,precedes:«
 set list
 set cursorline
 
